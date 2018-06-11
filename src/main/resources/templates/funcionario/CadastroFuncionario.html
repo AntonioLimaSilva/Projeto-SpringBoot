@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:sysnde="http://luclimasilva23@gmail.com"
+	layout:decorate="~{layout/LayoutPadrao}">
+
+<head>
+	<title>SysNDE | Funcionário</title>
+
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-datepicker.standalone.min.css}" />
+	<link rel="stylesheet" th:href="@{/stylesheets/vendors/uikit.min.css}" />
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<section class="content-header">
+			<h1>Formulário</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li><a href="#">Forms</a></li>
+				<li class="active">General Elements</li>
+			</ol>
+		</section>
+
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box box-primary">
+						<div class="box-header with-border">
+							<h3 class="box-title">Novo Funcionário</h3>
+						</div>
+						<form role="form" method="POST" th:object="${funcionario}" th:action="@{/funcionarios/novo}">
+							<div class="box-body">
+
+								<sysnde:message />
+
+								<div class="input-group" sysnde:classforerror="nome">
+									<span class="input-group-addon"><i class="fa fa-user"></i></span>
+									<input type="text" class="form-control" id="nome" placeholder="Informe um nome" th:field="*{nome}">
+								</div>
+								<div class="input-group" sysnde:classforerror="email">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email"	class="form-control" id="email" placeholder="Informe um email" th:field="*{email}">
+								</div>
+								<div class="input-group" sysnde:classforerror="telefone">
+									<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+									<input type="text" class="form-control js-phone" id="telefone" placeholder="Informe um telefone" th:field="*{telefone}">
+								</div>
+								<div class="input-group" sysnde:classforerror="cpf">
+									<span class="input-group-addon"><i class="fa fa-drivers-license-o"></i></span> 
+									<input type="text" class="form-control js-cpf" id="cpf"	placeholder="Informe um CPF" th:field="*{cpf}">
+								</div>
+								<div class="input-group" sysnde:classforerror="rg">
+									<span class="input-group-addon"><i class="fa fa-drivers-license-o"></i></span> 
+									<input type="text" class="form-control" id="rg" placeholder="Informe um RG"	th:field="*{rg}">
+								</div>
+								<div class="input-group" sysnde:classforerror="dataAdmissao">
+									<span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+									<input type="text" class="form-control js-date" id="dataAdmissao" placeholder="Informe a data de adimissão"
+										th:field="*{dataAdmissao}" autocomplete="off">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+									<input type="text"	class="form-control js-date" id="dataDemissao"
+										placeholder="Informe a data de demissão" th:field="*{dataDemissao}" autocomplete="off">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+									<input type="text" class="form-control js-date" id="dataNascimento"
+										placeholder="Informe a data de nascimento" th:field="*{dataNascimento}" autocomplete="off">
+								</div>
+								<div class="input-group"
+									sysnde:classforerror="endereco.estado.id">
+									<span class="input-group-addon"><i class="fa fa-list"></i></span>
+									<select id="estado" class="form-control" th:field="*{endereco.estado}">
+										<option value="">Selecione um estado</option>
+										<option th:each="estado : ${estados}" th:value="${estado.id}">[[${estado.nome}]]</option>
+									</select>
+								</div>
+								<div class="input-group"
+									sysnde:classforerror="endereco.cidade.id">
+									<span class="input-group-addon"><i class="fa fa-list"></i></span>
+									<select id="cidade" data:url="@{/cidades}" class="form-control" th:field="*{endereco.cidade}">
+										<option value="">Selecione uma cidade</option>
+									</select>
+								</div>
+								<div class="input-group" sysnde:classforerror="cargo">
+									<span class="input-group-addon"><i class="fa fa-list"></i></span>
+									<select id="cargo" class="form-control" th:field="*{cargo}">
+										<option value="">Selecione um cargo</option>
+										<option th:each="cargo : ${cargos}" th:value="${cargo.id}">[[${cargo.descricao}]]</option>
+									</select>
+								</div>
+								<div class="input-group" sysnde:classforerror="endereco.bairro">
+									<span class="input-group-addon"><i class="fa fa-text-height"></i></span> 
+									<input type="text" class="form-control" id="bairro"	placeholder="Informe um bairro" th:field="*{endereco.bairro}">
+								</div>
+								<div class="input-group" sysnde:classforerror="endereco.rua">
+									<span class="input-group-addon"><i class="fa fa-text-height"></i></span> 
+									<input type="text" class="form-control" id="rua" placeholder="Informe uma rua"
+										th:field="*{endereco.rua}">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-text-height"></i></span> 
+									<input type="text" class="form-control" id="numero"
+										placeholder="Informe um número" th:field="*{endereco.numero}">
+								</div>
+								<div class="input-group" sysnde:classforerror="endereco.cep">
+									<span class="input-group-addon"><i class="fa fa-text-height"></i></span> 
+									<input type="text"	class="form-control js-cep" id="cep"
+										placeholder="Informe um CEP" th:field="*{endereco.cep}">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><i	class="fa fa-text-height"></i></span>
+									<textarea rows="5" class="form-control" id="observacao"
+										placeholder="Informe uma observação" th:field="*{observacao}"></textarea>
+								</div>
+								<div class="input-group">
+									<input id="foto" type="hidden" th:field="*{foto}">
+									<input id="tipoConteudo" type="hidden" th:field="*{tipoConteudo}">
+									<span class="input-group-addon"><i class="fa fa-file"></i></span>
+									<input type="file" id="fotoSelecionada" accept=".jpeg,.jpg,.png" th:attr="data-url=@{/fotos}">
+								</div>
+							</div>
+
+							<div class="box-footer">
+								<button type="submit" class="btn btn-primary">Salvar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<th:block layout:fragment="javascript-extra">
+		<script th:src="@{/javascripts/vendors/bootstrap-datepicker.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/bootstrap-datepicker.pt-BR.min.js}"></script>
+		<script th:src="@{/js/uikit.min.js}"></script>
+		<script th:src="@{/js/uikit-icons.min.js}"></script>
+		<script th:src="@{/javascripts/sysnde.combo-estado-cidade.js}"></script>
+		<script th:src="@{/js/sysnde.upload-foto.js}"></script>
+	</th:block>
+</body>
+</html>

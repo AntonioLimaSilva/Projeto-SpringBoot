@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="utf-8">
+  <title>SysNDE</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  
+  <link rel="stylesheet" th:href="@{/layout/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/bower_components/font-awesome/css/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/bower_components/Ionicons/css/ionicons.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/dist/css/AdminLTE.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/dist/css/bootstrap-material-design.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/dist/css/ripples.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/dist/css/MaterialAdminLTE.min.css}">
+  <link rel="stylesheet" th:href="@{/layout/dist/css/skins/all-md-skins.min.css}">
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue fixed sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+	<th:block th:replace="layout/fragments/Header :: header"></th:block>
+	
+	<th:block th:replace="layout/fragments/SidebarLeft :: sidebar-left"></th:block>
+	
+	<div class="content-wrapper" layout:fragment="content"></div>
+	 
+	<th:block th:replace="layout/fragments/Footer :: footer"></th:block>
+	
+	<th:block th:replace="layout/fragments/SidebarRight :: sidebar-right"></th:block>	
+   
+    <div class="control-sidebar-bg"></div>
+</div>
+<script th:src="@{/layout/bower_components/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/layout/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/layout/dist/js/material.min.js}"></script>
+<script th:src="@{/layout/dist/js/ripples.min.js}"></script>
+<script>
+    $.material.init();
+</script>
+<script th:src="@{/layout/bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/layout/bower_components/fastclick/lib/fastclick.js}"></script>
+<script th:src="@{/layout/dist/js/adminlte.min.js}"></script>
+<script th:src="@{/layout/dist/js/demo.js}"></script>
+<script th:src="@{/javascripts/vendors/jquery.mask.min.js}"></script>
+<script th:src="@{/javascripts/vendors/jquery.maskMoney.min.js}"></script>
+<script th:src="@{/javascripts/sysnde.js}"></script>
+<th:block layout:fragment="javascript-extra"></th:block>
+</body>
+</html>

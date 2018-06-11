@@ -1,0 +1,10 @@
+CREATE TABLE [dbo].[cargo] (
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[descricao] [VARCHAR](200) NOT NULL,
+	CONSTRAINT [pk_cargo] PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+INSERT INTO cargo (descricao) VALUES
+('GERENTE ADMINISTRATIVO'),
+('GERENTE GERAL'),
+('GERENTE DE PRODUÇÃO');
